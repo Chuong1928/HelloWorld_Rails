@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>HelloWorld</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <!-- Bootstrap Css -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Icons Css -->
+    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body data-topbar="dark" data-layout="horizontal">
+
+    <!-- Begin page -->
+    <div >
+        
+        <div class="main-content">
+            <div class="page-content mt-0 pt-5">
+                <div class="container-fluid">
+                    <%= yield %>
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+        </div>
+        <!-- end main content-->
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="/assets/libs/jquery/jquery.min.js"></script>
+    <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+     <script>
+        <%== "var AUTH_TOKEN = #{form_authenticity_token.inspect};" %>
+    </script>
+    <!--custom js -->
+  
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+<div class="row">
+    <div class="col-12">
+     <h1>Chào mừng bạn đến với chương trình intern ruby on rails tại vareal VN</h1>
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Thành Viên (<%= @users.count %>)</h4>
+
+            <div class="page-title-right">
+                <a href="<%= new_user_path %>"
+                    class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i
+                        class="mdi mdi-plus mr-1"></i>Thêm Thành Viên Mới</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<p id="notice"><%= notice %></p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <%= render partial: 'list_users'%>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div> <!-- end col -->
+</div> <!-- end row -->
+

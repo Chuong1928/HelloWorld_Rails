@@ -1,0 +1,50 @@
+<h1 class="text-center">Thông tin Thành Viên</h1>
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h2>Danh sách bài viết của <%=@user.name %></h2>
+            <h4 class="mb-0 font-size-18">Tổng số bài viết (<%= @user.microposts.count %>)</h4>
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Tiêu đề</th>                       
+                            <th>Ngày tạo</th>
+                            <th>Ngày cập nhật</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="list-post">
+                        <%= render partial: 'microposts/list_microposts' , locals: {user: @user}%>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div> <!-- end col -->
+</div> <!-- end row -->
+<div class="d-flex justify-content-around ">
+    <%= link_to 'Chỉnh sửa thông tin', edit_user_path(@user) , class: "btn btn-info mx-2" %> 
+    <%= link_to 'Quay lại', users_path , class: "btn btn-primary mx-2"%>
+</div>

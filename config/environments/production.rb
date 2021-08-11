@@ -23,8 +23,6 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress CSS using a preprocessor.
-  config.assets.css_compressor = :yui
-  config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
@@ -34,7 +32,7 @@ Rails.application.configure do
    config.assets.digest = true
   
 
-  # Enable serving assets:precompileof images, stylesheets, and JavaScripts from an asset server.
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
   # Specifies the header that your server uses for sending files.

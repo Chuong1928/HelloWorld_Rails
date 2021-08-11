@@ -34,7 +34,7 @@ Rails.application.configure do
    config.assets.digest = true
   
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+  # Enable serving assets:precompileof images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
   # Specifies the header that your server uses for sending files.

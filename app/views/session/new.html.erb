@@ -1,0 +1,42 @@
+
+ <div class="we-login-register">
+            
+            <%= form_with model: @user,  url: sign_up_path, :html => {:id => "register-form-1"} do |f| %>
+                <% if @user.errors.any? %>
+                        <div class="alert alert-danger">
+                                <%= @user.errors.full_messages.each do |err| %>
+                                        <div> <%= err %></div>
+                                <% end %>
+                        </div>
+                <% end%>
+                  <div class="f-accname">
+                        <label for="accname" class="label-group">AWS account name</label> 
+                        <p class="reset-magin">Choose a name for your account. You can change this name in your account settings after you sign up.
+                        </p>
+                          <%= f.text_field :name, autofocus: true, autocomplete: "UserName" , placeholder: 'Nhập email' %> 
+                         <p class="reset-magin error-mes">.</p>
+                </div>
+                         
+                <div class="f-email ">
+                        <label for="email" class="label-group">Email address</label> 
+                        <p class="reset-magin">You will use this email address to sign in to your new AWS account.</p>
+                        <%= f.text_field :email, autofocus: true, autocomplete: "email" , placeholder: 'Nhập email' %>
+                        <p class="reset-magin error-mes">.</p>
+                </div>
+                <div class="f-pass">
+                        <label for="password" class="label-group">Password</label> 
+                        <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password' %> 
+                        <p class="reset-magin error-mes">.</p><br>
+                </div>
+                  
+                <div class="f-cfpass">
+                        <label for="cfpassword" class="label-group">Confirm password</label> 
+                        <%= f.password_field :password_confirmation, autocomplete: "current-password", placeholder: 'Confirm Password' %> 
+                        <p class="reset-magin error-mes">.</p>
+                </div>
+            
+                <button type="submit" class="btn-submit" data-ripple="">Đăng Ký</button>
+            <% end %>
+            
+</div>
+

@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestHTML</title>
+    
+    <%= stylesheet_link_tag 'users', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+    <!-- logo -->
+    <section>
+        <div class="logo text-center">
+            <img src="https://www.vareal.vn/wp-content/uploads/2021/06/logo_B.png" alt="">
+        </div>
+    </section>
+    <!-- end logo -->
+    <!-- Content -->
+    <section>
+        <div class="container mt-5">
+            <div class="left-content">
+                <h3>Explore Free Tier products with a new AWS account.
+                </h3>
+                <p>To learn more, visit aws.amazon.com/free.</p>
+                <div class="hero-img">
+                    <img src="https://d3c9ouasuy8pg6.cloudfront.net/dist/images/credential-light_a0fe0c5fd9697bd0322aa18f1769a946.png" alt="">
+                </div>
+            </div>
+            <div class="right-content">
+                <h1 class="mt-0">Sign up for AWS</h1>
+                 <%= yield %>
+              
+            </div>
+        </div>
+    </section>
+    <!--end Content -->
+    <!--form-->
+   <%= javascript_pack_tag 'validate', 'data-turbolinks-track': 'reload' %>
+    
+</body>
+</html>

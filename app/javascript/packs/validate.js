@@ -102,7 +102,7 @@ Validator.isLength = function(seletor,minLength){
         seletor : seletor,
         check : function(pass){
             if(pass.length == 0) return 'A password is required.';
-           return (pass.length >= minLength ) ? undefined:'Your password must have a minimum of 8 characters and a maximum of 128 characters.';
+           return (pass.length >= minLength ) ? undefined:'Your password must have a minimum of 6 characters and a maximum of 128 characters.';
         }
     }
 }
@@ -124,7 +124,7 @@ Validator({
         Validator.isEmail("#user_email"),
         Validator.isName("#user_name"),
         Validator.isPass("#user_password"),
-        Validator.isLength("#user_password",8),
+        Validator.isLength("#user_password",6),
         Validator.isConfirmPass("#user_password_confirmation", function (){
             return document.querySelector("#register-form-1 #user_password").value;
         })

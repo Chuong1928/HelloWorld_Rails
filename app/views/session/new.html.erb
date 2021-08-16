@@ -11,7 +11,7 @@
                         <label for="accname" class="label-group">AWS account name</label> 
                         <p class="reset-magin">Choose a name for your account. You can change this name in your account settings after you sign up.
                         </p>
-                          <%= f.text_field :name, autofocus: true, autocomplete: "UserName" , placeholder: 'Nhập email' %> 
+                          <%= f.text_field :name, autofocus: true, autocomplete: "UserName" , placeholder: 'Your Username' %> 
                          <p class="reset-magin error-mes">.</p>
                          <% if @user.errors.include?(:name) %>
                                  <div class="alert alert-danger">
@@ -26,7 +26,7 @@
                 <div class="f-email ">
                         <label for="email" class="label-group">Email address</label> 
                         <p class="reset-magin">You will use this email address to sign in to your new AWS account.</p>
-                        <%= f.text_field :email, autofocus: true, autocomplete: "email" , placeholder: 'Nhập email' %>
+                        <%= f.text_field :email, autofocus: true, autocomplete: "email" , placeholder: 'Your email' %>
                         <p class="reset-magin error-mes">.</p>
                          <% if @user.errors.include?(:email) %>
                                  <div class="alert alert-danger">

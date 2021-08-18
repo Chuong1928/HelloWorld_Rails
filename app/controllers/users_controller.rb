@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  include SessionsHelper
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :logged_in_user, only: [:edit, :update]
 
   # GET /users or /users.json
   def index
@@ -66,5 +68,13 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :email)
+    end
+
+    def logged_in_user
+      
+      unless !!current_user.present?
+        flash[:notice] = "Please log in."
+        redirect_to login_url
+        end
     end
 end

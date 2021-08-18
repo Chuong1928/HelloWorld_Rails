@@ -6,8 +6,13 @@ Rails.application.routes.draw do
   resources :microposts
   resources :users
   get "/" => "users#index"
-  get "sign_up" => "session#new"
-  post "sign_up" => "session#create"
+  get "sign_up" => "register#new"
+  post "sign_up" => "register#create"
+
+  get '/login',to: 'sessions#new'
+  post "/login" => "sessions#create"
+  delete "/logout" => "sessions#destroy"
+
 
   match "/404", to: 'errors#not_found', via: :all
   match "/422", to: 'errors#unprocessable', via: :all

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   resources :microposts
   resources :users
+  resources :account_activations, only: [:edit]
   get "/" => "users#index"
   get "sign_up" => "register#new"
   post "sign_up" => "register#create"

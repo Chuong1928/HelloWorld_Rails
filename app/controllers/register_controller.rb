@@ -1,4 +1,5 @@
 class RegisterController < ApplicationController
+  include SessionsHelper
    layout "session"
     def new
         @user = User.new
@@ -9,7 +10,10 @@ class RegisterController < ApplicationController
     
         respond_to do |format|
           if @user.save
-            format.html { redirect_to users_path, notice: "User was successfully created." }
+            @user.send_activation_email
+            log_in @user
+            flash[:notice] = "Please check your email to activate your account."
+            format.html { redirect_to users_path }
             format.json { render :show, status: :created, location: @user }
           else
             format.html { render :new, status: :unprocessable_entity }

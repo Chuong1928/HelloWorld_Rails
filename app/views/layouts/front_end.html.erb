@@ -28,7 +28,11 @@
         <%= render partial: "shared/header" %>
         <div class="main-content">
             <div class="page-content mt-0 pt-5">
-                 
+                  <% flash.each do |type, msg| %>
+                    <div class="alert alert-info">
+                        <%= msg %>
+                    </div>
+                    <% end %>
                 <div class="container-fluid">
                     <%= yield %>
                 </div> <!-- container-fluid -->

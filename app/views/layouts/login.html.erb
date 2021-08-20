@@ -22,7 +22,11 @@
 </head>
 
 <body data-topbar="dark" data-layout="horizontal">
-
+    <% flash.each do |type, msg| %>
+    <div class="alert alert-info">
+        <%= msg %>
+    </div>
+    <% end %>
     <!-- Begin page -->
     <div >
        

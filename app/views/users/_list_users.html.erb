@@ -8,14 +8,20 @@
              <a href="<%= user_path(user) %>" class="mr-3 text-primary" data-toggle="tooltip"
                 data-original-title="Review"><i class="fas fa-eye font-size-18"></i></a>
    
- <a href="<%= edit_user_path(user) %>" class="mr-3 text-primary" data-toggle="tooltip">
+               <a href="<%= edit_user_path(user) %>" class="mr-3 text-primary" data-toggle="tooltip">
                 <i class="fas fa-user-edit font-size-18"></i>
             </a>
-            
-            <%= button_to user_path(user), method: :delete, data: { "toggle" => "tooltip","original-title" => "Delete" }, :onclick => "return confirm('Bạn có muốn xóa không ?')", class: "text-danger delete mr-3 btn btn-link p-0"  do %>
-                <i class="fas fa-trash-alt font-size-18"></i>
-            <% end %> 
-
+            <% if current_user.role? && !(user == current_user) %>
+               <%= button_to user_path(user), method: :delete, data: { "toggle" => "tooltip","original-title" => "Delete" }, :onclick => "return confirm('Bạn có muốn xóa không ?')", class: "text-danger delete mr-3 btn btn-link p-0"  do %>
+                    <i class="fas fa-trash-alt font-size-18"></i>
+               <% end %> 
+            <% end %>
+            <% if user.activated? %>
+               <p style="color:green" data-toggle="tooltip" data-placement="top" title="Account activated!"><i class="fas fa-check-circle"></i></p>
+            <% else %>
+                <p style="color:gray" data-toggle="tooltip" data-placement="top" title="Account NOT activated! "><i class="fas fa-check-circle"></i></p>
+            <% end %>
          </td>
       </tr>
 <% end %>
+<%= will_paginate @users %>

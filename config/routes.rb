@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   
+  get 'password_resets/new'
+  get 'password_resets/edit'
   # get 'errors/not_found'
   # get 'errors/internal_server_error'
   
   resources :microposts
   resources :users
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   get "/" => "users#index"
   get "sign_up" => "register#new"
   post "sign_up" => "register#create"

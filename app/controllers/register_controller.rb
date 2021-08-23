@@ -10,7 +10,7 @@ class RegisterController < ApplicationController
     
         respond_to do |format|
           if @user.save
-            #@user.send_activation_email
+            @user.send_activation_email
             log_in @user
             flash[:notice] = "Please check your email to activate your account."
             format.html { redirect_to users_path }

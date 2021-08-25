@@ -17,13 +17,13 @@ body{
     margin-left: 30px;
     margin-right: 40px;
 }
-.container{
+.container_resgiter{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.container::after{
+.container_resgiter::after{
     content: '';
     background: gray;
     width: 1px;
@@ -58,6 +58,12 @@ input[type=text],input[type=password]{
     padding: 7px;
     margin-top: 5px;
     border-radius: 3px;
+}
+.content_post{
+    width: 95% !important;
+}
+.textarea.form-control{
+    width: 95%;
 }
 input[type=text]:focus,input[type=password]:focus {
     border: 1px solid #00a1c9;
@@ -113,6 +119,7 @@ a.haved-account:hover{
     border: 1px solid transparent;
     border-radius: .25rem;
 }
+
 @media screen and (max-width: 1200px) {
     .left-content,.right-content{
         flex-basis: 25%;
@@ -124,13 +131,13 @@ a.haved-account:hover{
     }
 }
 @media screen and (max-width: 768px) {
-    .container{
+    .container_resgiter{
         display: flex;
         flex-direction: column;
         width: 70%;
         margin: 0 auto;
     }
-    .container::after,.hero-img{
+    .container_resgiter::after,.hero-img{
         display: none;
     }
 }

@@ -26,6 +26,18 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
  gem 'figaro'
+ gem 'faker', '~> 2.1.2'
+  #phân trang
+ gem 'kaminari'
+ gem 'bootstrap4-kaminari-views'
+
+ #validate cho hình ảnh
+ gem 'active_storage_validations', '0.8.2'
+
+ #chỉnh sửa hình ảnh
+ gem 'image_processing',  '1.9.3'
+ gem 'mini_magick',   '4.9.5'
+ 
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

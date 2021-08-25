@@ -1,26 +1,52 @@
-<% user.microposts.each do |post|  %>
-<tr>
-    <td>
-         <a href="<%= edit_micropost_path(post) %>" class="mr-3 text-primary" >
-          <%= post.title %>
-        </a>
-    </td>
-    
-    <td><%=  post.created_at.try(:strftime, "%d-%m-%Y   %T") %></td>
-    <td><%= post.updated_at.try(:strftime, "%d-%m-%Y  %T") %></td>
-    
-    <td class="d-flex">
-        <a href="<%= edit_micropost_path(post) %>" class="mr-3 text-primary" data-toggle="tooltip">
-            <i class="fas fa-edit font-size-18"></i>
-        </a>
-        
-        <a href="<%= micropost_path(post)%>" target="_blank" class="mr-3 text-primary" data-toggle="tooltip">
-                <i class="fas fa-eye font-size-18"></i>
-        </a>
-       
-        <%= button_to micropost_path(post), method: :delete, data: { "toggle" => "tooltip","original-title" => "Delete" }, :onclick => "return confirm('Bạn có muốn xóa không ?')", class: "text-danger delete mr-3 btn btn-link p-0"  do %>
-            <i class="fas fa-trash-alt font-size-18"></i>
-        <% end %>
-    </td>
-</tr>
-<% end %>
+                                        <% @user.microposts.each do |post| %>
+                                                <div class="post-item shadow my-3">
+                                                    <div class="item-head d-flex align-item-center">
+                                                        <div class="author-avatar bg-white p-1 rounded">
+                                                                        <!-- avatar of user here -->       
+                                                        </div>
+                                                        <div class="post-meta ml-2 flex-grow-1 py-2">
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <div class="post-detal">
+                                                                    <div class="author-info pb-2 position-relative">
+                                                                                <div class="user-name d-flex align-items-center">
+                                                                                    <a href="#" class="show-info-user"  data-id-user="<%= post.user.id %> " ><h5 class="mb-0"><%= post.user.name %> </h5></a>
+                                                                                    <span class="mx-2">-</span>
+                                                                                    <p class="mb-0 d-inline-block"><%= time_ago_in_words(post.created_at) %> ago</p>
+                                                                                    
+                                                                                </div> 
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="d-inline mb-0">
+                                                                                <a href="<%= micropost_path(post) %>" class="text-dark text-capitalize">
+                                                                                    <%= post.title %>
+                                                                                </a>
+                                                                            </p>
+                                                                            
+                                                                        </div>
+                                                                        
+                                                                        </div>
+                                                                      <div class="option_post d-flex align-items-center">
+                                                                            <% if @user == current_user && @user.activated? %>
+                                                                                <a href="<%= edit_micropost_path(post) %>" class="mr-3 text-primary" data-toggle="tooltip">
+                                                                                    <i class="fas fa-edit font-size-18"></i>
+                                                                                </a>
+                                                                                <a href="<%= micropost_path(post)%>" target="_blank" class="mr-3 text-primary" data-toggle="tooltip">
+                                                                                        <i class="fas fa-eye font-size-18"></i>
+                                                                                </a>
+                                                                                <%= button_to micropost_path(post), method: :delete, data: { "toggle" => "tooltip","original-title" => "Delete" }, :onclick => "return confirm('Bạn có muốn xóa không ?')", class: "text-danger delete mr-3 btn btn-link p-0"  do %>
+                                                                                    <i class="fas fa-trash-alt font-size-18"></i>
+                                                                                <% end %>
+                                                                            <% else %>
+                                                                                    <a href="<%= micropost_path(post)%>" target="_blank" class="mr-3 text-primary" data-toggle="tooltip">
+                                                                                        <i class="fas fa-eye font-size-18"></i>
+                                                                                    </a>
+                                                                            <% end %>
+                                                                    </div>
+                                                            </div>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    
+
+                                                </div>
+                                            <% end %>

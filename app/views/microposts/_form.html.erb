@@ -11,17 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+ 
+   <div class="outer">
+      <div class="outer">
+          <div class="form-group row mb-4">
+              <label for="taskname" class="col-form-label col-lg-2">Tiêu đề</label>
+              <div class="col-lg-10">
+                  <%= form.text_field :title, placeholder: 'Tiêu đề bài viết là gì ...' ,class: 'form-control'  %>
+              </div>
+          </div>
+          
+          <div class="form-group row mb-4">
+              <label class="col-form-label col-lg-2">Nội dung</label>
+              <div class="col-lg-10">
+                  <div class="">Bạn đang nghĩ gì ?</div>
+                  <%= form.text_area :content, class: "form-control content_post" %>
+              </div>
+          </div>
+      
+      </div>
+    </div>
+    <div class="text-center">
+        <%= link_to "Hủy", root_path , class: "btn btn-info mx-2" %>
+        <%= form.submit "Post", class: "btn btn-primary" %>
+    </div>                         
+    <span class="image">
+        <%= form.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    </span>
 <% end %>
+
+                                        
+                                                         
+                                    

@@ -1,7 +1,15 @@
-<h1>Sample App</h1>
-<p>Hi <%= @user.name %>,</p>
-<p>
-Welcome to the Sample App! Click on the link below to activate your account:
-</p>
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
-email: @user.email) %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hi <%= @user.name %>,</p>
+        <p>
+        Welcome to the Sample App! Click on the link below to activate your account:
+        </p>
+        <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+        email: @user.email) %>
+        <a href="fb.com"> Go to facebook</a>
+  </body>
+</html>

@@ -38,7 +38,7 @@ gem 'jbuilder', '~> 2.7'
  gem 'image_processing',  '1.9.3'
  gem 'mini_magick',   '4.9.5'
  #lưu trữ trên sever
- gem 'aws-sdk-s3', '1.46.0', require: false
+ gem 'aws-sdk-s3', '~> 1.99'
 
 
 # Reduces boot times through caching; required in config/boot.rb

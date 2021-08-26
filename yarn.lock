@@ -7431,6 +7431,11 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+vips@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vips/-/vips-1.0.0.tgz#c028772d8fcb5e92c30cd431538c416347d2d593"
+  integrity sha1-wCh3LY/LXpLDDNQxU4xBY0fS1ZM=
+
 vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"

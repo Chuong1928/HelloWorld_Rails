@@ -5,6 +5,9 @@ ruby '3.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
+
+gem 'image_processing',  '1.9.3'
+gem 'mini_magick',   '4.9.5'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -35,8 +38,7 @@ gem 'jbuilder', '~> 2.7'
  gem 'active_storage_validations', '0.8.2'
 
  #chỉnh sửa hình ảnh
- gem 'image_processing',  '1.9.3'
- gem 'mini_magick',   '4.9.5'
+ 
  #lưu trữ trên sever
  gem 'aws-sdk-s3', '~> 1.99'
 

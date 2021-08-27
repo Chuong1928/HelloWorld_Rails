@@ -2,20 +2,8 @@
 <p id="notice"><%= notice %></p>
 <div class ="profile_user">
     <div class="container my-3 d-flex justify-content-center">
-        <div class="card p-3">
-            <div class="d-flex align-items-center">
-                <div class="image"> <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155"> </div>
-                <div class="ml-3 w-100">
-                    <h4 class="mb-0 mt-0"> <%= @user.name %></h4> 
-                    <span> <%= @user.email %></span>
-                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-                        <div class="d-flex flex-column"> <span class="articles">Posts</span> <span class="number1"> <%= @user.microposts.count %></span> </div>
-                        <div class="d-flex flex-column"> <span class="followers">Followers</span> <span class="number2">980</span> </div>
-             
-                    </div>
-                    <div class="button mt-2 d-flex flex-row align-items-center"> <button class="btn btn-sm btn-outline-primary w-100">Chat</button> <button class="btn btn-sm btn-primary w-100 ml-2">Follow</button> </div>
-                </div>
-            </div>
+        <div class="card p-3" id= "profile-user">
+                <%= render partial: "profile" %>
         </div>
     </div>
 </div>
@@ -29,18 +17,18 @@
                     <div class="crypto-buy-sell-nav">
                         <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link " data-toggle="tab" href="#post" role="tab">
+                                <a class="nav-link " data-toggle="tab" href="#list_post" role="tab">
                                     Bài viết (<%= @user.microposts.count%>)
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#follows" role="tab">
-                                    Người theo dõi
+                                    Người theo dõi (<%= @user.followers.count%>)
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#followeds" role="tab">
-                                    Đang theo dõi
+                                    Đang theo dõi (<%= @user.following.count%>)
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -55,7 +43,7 @@
                             </li>
                         </ul>
 
-                        <div class="tab-content crypto-buy-sell-nav-content px-4">
+                        <div class="tab-content crypto-buy-sell-nav-content">
                             <div class="tab-pane active" id="list_post" role="tabpanel">
                     
                                 <!-- post item here -->
@@ -64,13 +52,72 @@
 
                             <div class="tab-pane" id="follows" role="tabpanel">
                                 <div class="row">
-                                
-                                
+                                    <% @user.followers.each do |user| %>
+                                        <div class="card m-3" style="width: 17rem;">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between py-2 align-items-center">
+                                                        <h5 class="card-title mb-0"><%= user.name %></h5>
+                                                        <a href="#" class="btn btn-sm btn-primary">Card link</a>
+                                                </div>
+                                                
+                                                <h6 class="card-subtitle mb-2 text-muted"><%= user.email %></h6>
+                                                <div class="d-flex justify-content-between py-2 align-items-center">
+                                                        <span>
+                                                            <h6 class="card-title mb-0">Post</h6>
+                                                            <p><%= user.microposts.count %></p>
+                                                        </span>
+                                                        <span>
+                                                            <h6 class="card-title mb-0">Follower</h6>
+                                                            <p><%= user.followers.count %></p>
+                                                        </span>
+                                                </div>
+                                                
+                                                
+                                               
+                                            </div>
+                                            </div>
+                                    <% end %>
                                 </div>
                             </div>
                             <div class="tab-pane" id="followeds" role="tabpanel">
                                 <div class="row">
-                                    
+                                    <% @user.following.each do |user| %>
+                                        <div class="card m-3" style="width: 17rem;">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between py-2 align-items-center">
+                                                        <h5 class="card-title mb-0"><%= user.name %></h5>
+                                                          <% if current_user.present? && current_user.following_ids.include?(user.id)%>
+                                                                    <%= button_to  relationship_path(current_user.active_relationships.find_by(followed_id: user.id).id), method: :delete, class: "btn btn-outline-primary btn-sm btn-follow" do%>
+                                                                            Hủy theo dõi
+                                                                    <% end  %>
+                                                            <% else %>
+                                                                    <% if user != current_user%>
+                                                                         <%= form_for(current_user.active_relationships.build) do |f| %>
+                                                                            <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                                                                            <%= f.submit "Follow", class: "btn btn btn-sm btn-primary" %>
+                                                                         <% end %>
+                                                                    <% end %>
+                                                                   
+                                                         <% end %>
+                                                </div>
+                                                
+                                                <h6 class="card-subtitle mb-2 text-muted"><%= user.email %></h6>
+                                                <div class="d-flex justify-content-between py-2 align-items-center">
+                                                        <span>
+                                                            <h6 class="card-title mb-0">Post</h6>
+                                                            <p><%= user.microposts.count %></p>
+                                                        </span>
+                                                        <span>
+                                                            <h6 class="card-title mb-0">Follower</h6>
+                                                            <p><%= user.followers.count %></p>
+                                                        </span>
+                                                </div>
+                                                
+                                                
+                                               
+                                            </div>
+                                            </div>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>

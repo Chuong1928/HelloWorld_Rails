@@ -119,7 +119,9 @@ a.haved-account:hover{
     border: 1px solid transparent;
     border-radius: .25rem;
 }
-
+.post-image-resized{
+    object-fit: contain;
+}
 @media screen and (max-width: 1200px) {
     .left-content,.right-content{
         flex-basis: 25%;

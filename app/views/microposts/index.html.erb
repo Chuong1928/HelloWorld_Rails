@@ -32,12 +32,12 @@
                                     </div> 
                             </div>
                             <div>
-                                <p class="d-inline mb-0">
+                                <p class="d-block mb-0">
                                     <a href="<%= micropost_path(post) %>" class="text-dark text-capitalize">
                                         <%= post.content %>
                                     </a>
                                 </p>
-                                <%= image_tag post.image if post.image.attached? %>
+                                <%= image_tag post.image,size: 300, class: "post-image-resized" if post.image.attached? %>
                             </div>
                             
                             </div>

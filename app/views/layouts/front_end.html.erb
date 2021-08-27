@@ -19,6 +19,7 @@
     <script src="https://kit.fontawesome.com/08341c31c3.js" crossorigin="anonymous"></script>
  
    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>  
+   
 </head>
 
 <body data-topbar="dark" data-layout="horizontal">
@@ -54,6 +55,9 @@
 
     
     <!--custom js -->
+    <script>
+        <%== "var AUTH_TOKEN = #{form_authenticity_token.inspect};" %>
+    </script>
     <%= javascript_pack_tag 'test', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>

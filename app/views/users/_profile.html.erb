@@ -16,9 +16,9 @@
                                     <button class="btn btn-sm btn-outline-primary w-75 mr-3">Chat</button>
                                         <div id="follow_form">
                                             <% if current_user.following?(@user) %>
-                                                <%= render 'unfollow' %>
+                                                <%= render 'users/unfollow' %>
                                             <% else %>
-                                                <%= render 'follow' %>
+                                                <%= render 'users/follow' %>
                                             <% end %>
                                         </div>
                                     <% end %> 

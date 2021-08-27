@@ -1,9 +1,10 @@
 class RelationshipsController < ApplicationController
     include SessionsHelper
+    layout "front_end"
     before_action :logged_in_user
 
     def create
-        @user = User.find(params[:followed_id])
+        @user = User.find(params[:tag][:followed_id])
         current_user.follow(@user)
         respond_to do |format|
             format.html { redirect_to @user }

@@ -1,18 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @micropost.content %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @micropost.user_id %>
-</p>
+<div class="row px-5">
+  <div class="col-12 col-lg-8">
+      <div class="content-post ">
+            <div class="content">
+                <div class="container">
+                  <h2><%= @micropost.title %></h2>
+                   
+                  <span class="d-flex align-items-center py-2">Tác giả : <a href="<%= user_path(@micropost.user) %>" class="mr-3 text-primary" ><h5 class="mb-0"><%= @micropost.user.name %></h5></a> </span>
+                  <span>Ngày đăng : <%=@micropost.created_at %></span>
+                  <hr>
+                  <p><%= @micropost.content %></p>
+                  <%= image_tag @micropost.image , class: "post_image_conver w-100" if @micropost.image.attached? %>
+                </div>
+            </div>
+            <p class="text-center my-5">[HẾT]</p>
+            <hr>
+      </div>
+      <h5>Xem thêm bài viết từ <%= @micropost.user.name %></h5>
+       <div class="row">
+                <% @micropost.user.microposts.limit(3).each do |post| %>
+                    <div class="card m-2" style="width: 17rem;">
+                        <div class="card-body">
+                            <div>
+                                <h5><%= post.title %></h5>
+                            </div>
+                             <p class="mb-0 d-inline-block"><%= time_ago_in_words(post.created_at) %> ago</p>
+                            <div class="d-flex justify-content-between py-2 align-items-center">
+                                  <h6><%= post.user.name %></h6>
 
-  <%= image_tag @micropost.display_image if @micropost.image.attached? %>
-
-
-
-<%= link_to 'Edit', edit_micropost_path(@micropost) %> |
-<%= link_to 'Back', microposts_path %>
+                            </div>
+                            
+                        </div>
+                        </div>
+                <% end %>
+            </div>
+  </div>
+  <div class="col-lg-4 col-12">
+    <div class="newest-post">
+        <h4>Bài viết mới</h4>
+        <hr>
+         <%  @posts.each do |post| %>
+                    <div>
+                        <h5><%= post.title %></h5>
+                    </div>
+                      <p class="mb-0 d-inline-block"><%= time_ago_in_words(post.created_at) %> ago</p>
+                    <div class="d-flex justify-content-between py-2 align-items-center">
+                          <h6><%= post.user.name %></h6>
+                  </div>
+                  <hr>
+        <% end %>
+    </div>
+  </div>
+</div>

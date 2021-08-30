@@ -8,7 +8,7 @@ class RelationshipsController < ApplicationController
         current_user.follow(@user)
         respond_to do |format|
             format.html { redirect_to @user }
-            format.js 
+            format.js { render layout: false } 
         end
     end
     def destroy
@@ -16,7 +16,7 @@ class RelationshipsController < ApplicationController
         current_user.unfollow(@user)
         respond_to do |format|
             format.html { redirect_to @user }
-            format.js
+            format.js { render layout: false }
         end
     end
 

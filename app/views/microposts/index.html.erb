@@ -24,20 +24,18 @@
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="post-detal">
                         <div class="author-info pb-2 position-relative">
-                                    <div class="user-name d-flex align-items-center">
-                                        <a href="#" class="show-info-user"  data-id-user="<%= post.user.id %> " ><h5 class="mb-0"><%= post.user.name %> </h5></a>
-                                        <span class="mx-2">-</span>
-                                        <p class="mb-0 d-inline-block"><%= time_ago_in_words(post.created_at) %> ago</p>
-                                        
+                                    <div class="user-name">
+                                         <a href="<%= micropost_path(post) %>" class="text-dark text-capitalize">
+                                             <h5 style="color:blue"> <%= post.title %> </h5>
+                                         </a>
+                                        <span class="d-flex align-items-center py-2">Tác giả : <a href="<%= user_path(post.user) %>" class="mr-3 text-primary" ><h5 class="mb-0"><%= post.user.name %></h5></a> </span>
+                                        <span>Ngày đăng : <%= post.created_at %></span>
+                                        <hr>
                                     </div> 
                             </div>
                             <div>
-                                <p class="d-block mb-0">
-                                    <a href="<%= micropost_path(post) %>" class="text-dark text-capitalize">
-                                        <%= post.content %>
-                                    </a>
-                                </p>
-                                <%= image_tag post.image ,size: 300, class: "post_image_conver" if post.image.attached? %>
+                               
+                               
                             </div>
                             
                             </div>

@@ -10,6 +10,7 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/1 or /microposts/1.json
   def show
+    @posts = Micropost.all.order(created_at: :desc)
   end
 
   # GET /microposts/new
